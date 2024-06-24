@@ -1,0 +1,532 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> programa
+Rule 1     programa -> INICIO PUNTOYCOMA declaraciones FIN PUNTOYCOMA
+Rule 2     declaraciones -> declaraciones declaracion
+Rule 3     declaraciones -> declaracion
+Rule 4     declaracion -> declaracion_variable
+Rule 5     declaracion -> sentencia
+Rule 6     declaracion_variable -> CADENA ID IGUAL STRING PUNTOYCOMA
+Rule 7     declaracion_variable -> CADENA ID IGUAL NUMERO PUNTOYCOMA
+Rule 8     sentencia -> sentencia_proceso
+Rule 9     sentencia -> sentencia_imprimir
+Rule 10    sentencia -> sentencia_if
+Rule 11    sentencia_proceso -> PROCESO PUNTOYCOMA
+Rule 12    sentencia_imprimir -> IMPRIMIR STRING PUNTOYCOMA
+Rule 13    sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER
+Rule 14    sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER sentencia_if
+Rule 15    condicion -> expresion COMPARACION expresion
+Rule 16    expresion -> ID
+Rule 17    expresion -> NUMERO
+Rule 18    expresion -> STRING
+
+Terminals, with rules where they appear
+
+CADENA               : 6 7
+COMPARACION          : 15
+FIN                  : 1
+ID                   : 6 7 16
+IF                   : 13 14
+IGUAL                : 6 7
+IMPRIMIR             : 12
+INICIO               : 1
+LLAVEDER             : 13 14
+LLAVEIZQ             : 13 14
+NUMERO               : 7 17
+PARENDER             : 13 14
+PARENIZQ             : 13 14
+PROCESO              : 11
+PUNTOYCOMA           : 1 1 6 7 11 12
+STRING               : 6 12 18
+error                : 
+
+Nonterminals, with rules where they appear
+
+condicion            : 13 14
+declaracion          : 2 3
+declaracion_variable : 4
+declaraciones        : 1 2 13 14
+expresion            : 15 15
+programa             : 0
+sentencia            : 5
+sentencia_if         : 10 14
+sentencia_imprimir   : 9
+sentencia_proceso    : 8
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programa
+    (1) programa -> . INICIO PUNTOYCOMA declaraciones FIN PUNTOYCOMA
+
+    INICIO          shift and go to state 2
+
+    programa                       shift and go to state 1
+
+state 1
+
+    (0) S' -> programa .
+
+
+
+state 2
+
+    (1) programa -> INICIO . PUNTOYCOMA declaraciones FIN PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 3
+
+
+state 3
+
+    (1) programa -> INICIO PUNTOYCOMA . declaraciones FIN PUNTOYCOMA
+    (2) declaraciones -> . declaraciones declaracion
+    (3) declaraciones -> . declaracion
+    (4) declaracion -> . declaracion_variable
+    (5) declaracion -> . sentencia
+    (6) declaracion_variable -> . CADENA ID IGUAL STRING PUNTOYCOMA
+    (7) declaracion_variable -> . CADENA ID IGUAL NUMERO PUNTOYCOMA
+    (8) sentencia -> . sentencia_proceso
+    (9) sentencia -> . sentencia_imprimir
+    (10) sentencia -> . sentencia_if
+    (11) sentencia_proceso -> . PROCESO PUNTOYCOMA
+    (12) sentencia_imprimir -> . IMPRIMIR STRING PUNTOYCOMA
+    (13) sentencia_if -> . IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER
+    (14) sentencia_if -> . IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER sentencia_if
+
+    CADENA          shift and go to state 8
+    PROCESO         shift and go to state 12
+    IMPRIMIR        shift and go to state 13
+    IF              shift and go to state 14
+
+    declaraciones                  shift and go to state 4
+    declaracion                    shift and go to state 5
+    declaracion_variable           shift and go to state 6
+    sentencia                      shift and go to state 7
+    sentencia_proceso              shift and go to state 9
+    sentencia_imprimir             shift and go to state 10
+    sentencia_if                   shift and go to state 11
+
+state 4
+
+    (1) programa -> INICIO PUNTOYCOMA declaraciones . FIN PUNTOYCOMA
+    (2) declaraciones -> declaraciones . declaracion
+    (4) declaracion -> . declaracion_variable
+    (5) declaracion -> . sentencia
+    (6) declaracion_variable -> . CADENA ID IGUAL STRING PUNTOYCOMA
+    (7) declaracion_variable -> . CADENA ID IGUAL NUMERO PUNTOYCOMA
+    (8) sentencia -> . sentencia_proceso
+    (9) sentencia -> . sentencia_imprimir
+    (10) sentencia -> . sentencia_if
+    (11) sentencia_proceso -> . PROCESO PUNTOYCOMA
+    (12) sentencia_imprimir -> . IMPRIMIR STRING PUNTOYCOMA
+    (13) sentencia_if -> . IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER
+    (14) sentencia_if -> . IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER sentencia_if
+
+    FIN             shift and go to state 15
+    CADENA          shift and go to state 8
+    PROCESO         shift and go to state 12
+    IMPRIMIR        shift and go to state 13
+    IF              shift and go to state 14
+
+    declaracion                    shift and go to state 16
+    declaracion_variable           shift and go to state 6
+    sentencia                      shift and go to state 7
+    sentencia_proceso              shift and go to state 9
+    sentencia_imprimir             shift and go to state 10
+    sentencia_if                   shift and go to state 11
+
+state 5
+
+    (3) declaraciones -> declaracion .
+
+    FIN             reduce using rule 3 (declaraciones -> declaracion .)
+    CADENA          reduce using rule 3 (declaraciones -> declaracion .)
+    PROCESO         reduce using rule 3 (declaraciones -> declaracion .)
+    IMPRIMIR        reduce using rule 3 (declaraciones -> declaracion .)
+    IF              reduce using rule 3 (declaraciones -> declaracion .)
+    LLAVEDER        reduce using rule 3 (declaraciones -> declaracion .)
+
+
+state 6
+
+    (4) declaracion -> declaracion_variable .
+
+    FIN             reduce using rule 4 (declaracion -> declaracion_variable .)
+    CADENA          reduce using rule 4 (declaracion -> declaracion_variable .)
+    PROCESO         reduce using rule 4 (declaracion -> declaracion_variable .)
+    IMPRIMIR        reduce using rule 4 (declaracion -> declaracion_variable .)
+    IF              reduce using rule 4 (declaracion -> declaracion_variable .)
+    LLAVEDER        reduce using rule 4 (declaracion -> declaracion_variable .)
+
+
+state 7
+
+    (5) declaracion -> sentencia .
+
+    FIN             reduce using rule 5 (declaracion -> sentencia .)
+    CADENA          reduce using rule 5 (declaracion -> sentencia .)
+    PROCESO         reduce using rule 5 (declaracion -> sentencia .)
+    IMPRIMIR        reduce using rule 5 (declaracion -> sentencia .)
+    IF              reduce using rule 5 (declaracion -> sentencia .)
+    LLAVEDER        reduce using rule 5 (declaracion -> sentencia .)
+
+
+state 8
+
+    (6) declaracion_variable -> CADENA . ID IGUAL STRING PUNTOYCOMA
+    (7) declaracion_variable -> CADENA . ID IGUAL NUMERO PUNTOYCOMA
+
+    ID              shift and go to state 17
+
+
+state 9
+
+    (8) sentencia -> sentencia_proceso .
+
+    FIN             reduce using rule 8 (sentencia -> sentencia_proceso .)
+    CADENA          reduce using rule 8 (sentencia -> sentencia_proceso .)
+    PROCESO         reduce using rule 8 (sentencia -> sentencia_proceso .)
+    IMPRIMIR        reduce using rule 8 (sentencia -> sentencia_proceso .)
+    IF              reduce using rule 8 (sentencia -> sentencia_proceso .)
+    LLAVEDER        reduce using rule 8 (sentencia -> sentencia_proceso .)
+
+
+state 10
+
+    (9) sentencia -> sentencia_imprimir .
+
+    FIN             reduce using rule 9 (sentencia -> sentencia_imprimir .)
+    CADENA          reduce using rule 9 (sentencia -> sentencia_imprimir .)
+    PROCESO         reduce using rule 9 (sentencia -> sentencia_imprimir .)
+    IMPRIMIR        reduce using rule 9 (sentencia -> sentencia_imprimir .)
+    IF              reduce using rule 9 (sentencia -> sentencia_imprimir .)
+    LLAVEDER        reduce using rule 9 (sentencia -> sentencia_imprimir .)
+
+
+state 11
+
+    (10) sentencia -> sentencia_if .
+
+    FIN             reduce using rule 10 (sentencia -> sentencia_if .)
+    CADENA          reduce using rule 10 (sentencia -> sentencia_if .)
+    PROCESO         reduce using rule 10 (sentencia -> sentencia_if .)
+    IMPRIMIR        reduce using rule 10 (sentencia -> sentencia_if .)
+    IF              reduce using rule 10 (sentencia -> sentencia_if .)
+    LLAVEDER        reduce using rule 10 (sentencia -> sentencia_if .)
+
+
+state 12
+
+    (11) sentencia_proceso -> PROCESO . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 18
+
+
+state 13
+
+    (12) sentencia_imprimir -> IMPRIMIR . STRING PUNTOYCOMA
+
+    STRING          shift and go to state 19
+
+
+state 14
+
+    (13) sentencia_if -> IF . PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER
+    (14) sentencia_if -> IF . PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER sentencia_if
+
+    PARENIZQ        shift and go to state 20
+
+
+state 15
+
+    (1) programa -> INICIO PUNTOYCOMA declaraciones FIN . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 21
+
+
+state 16
+
+    (2) declaraciones -> declaraciones declaracion .
+
+    FIN             reduce using rule 2 (declaraciones -> declaraciones declaracion .)
+    CADENA          reduce using rule 2 (declaraciones -> declaraciones declaracion .)
+    PROCESO         reduce using rule 2 (declaraciones -> declaraciones declaracion .)
+    IMPRIMIR        reduce using rule 2 (declaraciones -> declaraciones declaracion .)
+    IF              reduce using rule 2 (declaraciones -> declaraciones declaracion .)
+    LLAVEDER        reduce using rule 2 (declaraciones -> declaraciones declaracion .)
+
+
+state 17
+
+    (6) declaracion_variable -> CADENA ID . IGUAL STRING PUNTOYCOMA
+    (7) declaracion_variable -> CADENA ID . IGUAL NUMERO PUNTOYCOMA
+
+    IGUAL           shift and go to state 22
+
+
+state 18
+
+    (11) sentencia_proceso -> PROCESO PUNTOYCOMA .
+
+    FIN             reduce using rule 11 (sentencia_proceso -> PROCESO PUNTOYCOMA .)
+    CADENA          reduce using rule 11 (sentencia_proceso -> PROCESO PUNTOYCOMA .)
+    PROCESO         reduce using rule 11 (sentencia_proceso -> PROCESO PUNTOYCOMA .)
+    IMPRIMIR        reduce using rule 11 (sentencia_proceso -> PROCESO PUNTOYCOMA .)
+    IF              reduce using rule 11 (sentencia_proceso -> PROCESO PUNTOYCOMA .)
+    LLAVEDER        reduce using rule 11 (sentencia_proceso -> PROCESO PUNTOYCOMA .)
+
+
+state 19
+
+    (12) sentencia_imprimir -> IMPRIMIR STRING . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 23
+
+
+state 20
+
+    (13) sentencia_if -> IF PARENIZQ . condicion PARENDER LLAVEIZQ declaraciones LLAVEDER
+    (14) sentencia_if -> IF PARENIZQ . condicion PARENDER LLAVEIZQ declaraciones LLAVEDER sentencia_if
+    (15) condicion -> . expresion COMPARACION expresion
+    (16) expresion -> . ID
+    (17) expresion -> . NUMERO
+    (18) expresion -> . STRING
+
+    ID              shift and go to state 26
+    NUMERO          shift and go to state 27
+    STRING          shift and go to state 28
+
+    condicion                      shift and go to state 24
+    expresion                      shift and go to state 25
+
+state 21
+
+    (1) programa -> INICIO PUNTOYCOMA declaraciones FIN PUNTOYCOMA .
+
+    $end            reduce using rule 1 (programa -> INICIO PUNTOYCOMA declaraciones FIN PUNTOYCOMA .)
+
+
+state 22
+
+    (6) declaracion_variable -> CADENA ID IGUAL . STRING PUNTOYCOMA
+    (7) declaracion_variable -> CADENA ID IGUAL . NUMERO PUNTOYCOMA
+
+    STRING          shift and go to state 29
+    NUMERO          shift and go to state 30
+
+
+state 23
+
+    (12) sentencia_imprimir -> IMPRIMIR STRING PUNTOYCOMA .
+
+    FIN             reduce using rule 12 (sentencia_imprimir -> IMPRIMIR STRING PUNTOYCOMA .)
+    CADENA          reduce using rule 12 (sentencia_imprimir -> IMPRIMIR STRING PUNTOYCOMA .)
+    PROCESO         reduce using rule 12 (sentencia_imprimir -> IMPRIMIR STRING PUNTOYCOMA .)
+    IMPRIMIR        reduce using rule 12 (sentencia_imprimir -> IMPRIMIR STRING PUNTOYCOMA .)
+    IF              reduce using rule 12 (sentencia_imprimir -> IMPRIMIR STRING PUNTOYCOMA .)
+    LLAVEDER        reduce using rule 12 (sentencia_imprimir -> IMPRIMIR STRING PUNTOYCOMA .)
+
+
+state 24
+
+    (13) sentencia_if -> IF PARENIZQ condicion . PARENDER LLAVEIZQ declaraciones LLAVEDER
+    (14) sentencia_if -> IF PARENIZQ condicion . PARENDER LLAVEIZQ declaraciones LLAVEDER sentencia_if
+
+    PARENDER        shift and go to state 31
+
+
+state 25
+
+    (15) condicion -> expresion . COMPARACION expresion
+
+    COMPARACION     shift and go to state 32
+
+
+state 26
+
+    (16) expresion -> ID .
+
+    COMPARACION     reduce using rule 16 (expresion -> ID .)
+    PARENDER        reduce using rule 16 (expresion -> ID .)
+
+
+state 27
+
+    (17) expresion -> NUMERO .
+
+    COMPARACION     reduce using rule 17 (expresion -> NUMERO .)
+    PARENDER        reduce using rule 17 (expresion -> NUMERO .)
+
+
+state 28
+
+    (18) expresion -> STRING .
+
+    COMPARACION     reduce using rule 18 (expresion -> STRING .)
+    PARENDER        reduce using rule 18 (expresion -> STRING .)
+
+
+state 29
+
+    (6) declaracion_variable -> CADENA ID IGUAL STRING . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 33
+
+
+state 30
+
+    (7) declaracion_variable -> CADENA ID IGUAL NUMERO . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 34
+
+
+state 31
+
+    (13) sentencia_if -> IF PARENIZQ condicion PARENDER . LLAVEIZQ declaraciones LLAVEDER
+    (14) sentencia_if -> IF PARENIZQ condicion PARENDER . LLAVEIZQ declaraciones LLAVEDER sentencia_if
+
+    LLAVEIZQ        shift and go to state 35
+
+
+state 32
+
+    (15) condicion -> expresion COMPARACION . expresion
+    (16) expresion -> . ID
+    (17) expresion -> . NUMERO
+    (18) expresion -> . STRING
+
+    ID              shift and go to state 26
+    NUMERO          shift and go to state 27
+    STRING          shift and go to state 28
+
+    expresion                      shift and go to state 36
+
+state 33
+
+    (6) declaracion_variable -> CADENA ID IGUAL STRING PUNTOYCOMA .
+
+    FIN             reduce using rule 6 (declaracion_variable -> CADENA ID IGUAL STRING PUNTOYCOMA .)
+    CADENA          reduce using rule 6 (declaracion_variable -> CADENA ID IGUAL STRING PUNTOYCOMA .)
+    PROCESO         reduce using rule 6 (declaracion_variable -> CADENA ID IGUAL STRING PUNTOYCOMA .)
+    IMPRIMIR        reduce using rule 6 (declaracion_variable -> CADENA ID IGUAL STRING PUNTOYCOMA .)
+    IF              reduce using rule 6 (declaracion_variable -> CADENA ID IGUAL STRING PUNTOYCOMA .)
+    LLAVEDER        reduce using rule 6 (declaracion_variable -> CADENA ID IGUAL STRING PUNTOYCOMA .)
+
+
+state 34
+
+    (7) declaracion_variable -> CADENA ID IGUAL NUMERO PUNTOYCOMA .
+
+    FIN             reduce using rule 7 (declaracion_variable -> CADENA ID IGUAL NUMERO PUNTOYCOMA .)
+    CADENA          reduce using rule 7 (declaracion_variable -> CADENA ID IGUAL NUMERO PUNTOYCOMA .)
+    PROCESO         reduce using rule 7 (declaracion_variable -> CADENA ID IGUAL NUMERO PUNTOYCOMA .)
+    IMPRIMIR        reduce using rule 7 (declaracion_variable -> CADENA ID IGUAL NUMERO PUNTOYCOMA .)
+    IF              reduce using rule 7 (declaracion_variable -> CADENA ID IGUAL NUMERO PUNTOYCOMA .)
+    LLAVEDER        reduce using rule 7 (declaracion_variable -> CADENA ID IGUAL NUMERO PUNTOYCOMA .)
+
+
+state 35
+
+    (13) sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ . declaraciones LLAVEDER
+    (14) sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ . declaraciones LLAVEDER sentencia_if
+    (2) declaraciones -> . declaraciones declaracion
+    (3) declaraciones -> . declaracion
+    (4) declaracion -> . declaracion_variable
+    (5) declaracion -> . sentencia
+    (6) declaracion_variable -> . CADENA ID IGUAL STRING PUNTOYCOMA
+    (7) declaracion_variable -> . CADENA ID IGUAL NUMERO PUNTOYCOMA
+    (8) sentencia -> . sentencia_proceso
+    (9) sentencia -> . sentencia_imprimir
+    (10) sentencia -> . sentencia_if
+    (11) sentencia_proceso -> . PROCESO PUNTOYCOMA
+    (12) sentencia_imprimir -> . IMPRIMIR STRING PUNTOYCOMA
+    (13) sentencia_if -> . IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER
+    (14) sentencia_if -> . IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER sentencia_if
+
+    CADENA          shift and go to state 8
+    PROCESO         shift and go to state 12
+    IMPRIMIR        shift and go to state 13
+    IF              shift and go to state 14
+
+    declaraciones                  shift and go to state 37
+    sentencia_if                   shift and go to state 11
+    declaracion                    shift and go to state 5
+    declaracion_variable           shift and go to state 6
+    sentencia                      shift and go to state 7
+    sentencia_proceso              shift and go to state 9
+    sentencia_imprimir             shift and go to state 10
+
+state 36
+
+    (15) condicion -> expresion COMPARACION expresion .
+
+    PARENDER        reduce using rule 15 (condicion -> expresion COMPARACION expresion .)
+
+
+state 37
+
+    (13) sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones . LLAVEDER
+    (14) sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones . LLAVEDER sentencia_if
+    (2) declaraciones -> declaraciones . declaracion
+    (4) declaracion -> . declaracion_variable
+    (5) declaracion -> . sentencia
+    (6) declaracion_variable -> . CADENA ID IGUAL STRING PUNTOYCOMA
+    (7) declaracion_variable -> . CADENA ID IGUAL NUMERO PUNTOYCOMA
+    (8) sentencia -> . sentencia_proceso
+    (9) sentencia -> . sentencia_imprimir
+    (10) sentencia -> . sentencia_if
+    (11) sentencia_proceso -> . PROCESO PUNTOYCOMA
+    (12) sentencia_imprimir -> . IMPRIMIR STRING PUNTOYCOMA
+    (13) sentencia_if -> . IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER
+    (14) sentencia_if -> . IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER sentencia_if
+
+    LLAVEDER        shift and go to state 38
+    CADENA          shift and go to state 8
+    PROCESO         shift and go to state 12
+    IMPRIMIR        shift and go to state 13
+    IF              shift and go to state 14
+
+    sentencia_if                   shift and go to state 11
+    declaracion                    shift and go to state 16
+    declaracion_variable           shift and go to state 6
+    sentencia                      shift and go to state 7
+    sentencia_proceso              shift and go to state 9
+    sentencia_imprimir             shift and go to state 10
+
+state 38
+
+    (13) sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER .
+    (14) sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER . sentencia_if
+    (13) sentencia_if -> . IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER
+    (14) sentencia_if -> . IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER sentencia_if
+
+  ! shift/reduce conflict for IF resolved as shift
+    FIN             reduce using rule 13 (sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER .)
+    CADENA          reduce using rule 13 (sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER .)
+    PROCESO         reduce using rule 13 (sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER .)
+    IMPRIMIR        reduce using rule 13 (sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER .)
+    LLAVEDER        reduce using rule 13 (sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER .)
+    IF              shift and go to state 14
+
+  ! IF              [ reduce using rule 13 (sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER .) ]
+
+    sentencia_if                   shift and go to state 39
+
+state 39
+
+    (14) sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER sentencia_if .
+
+    FIN             reduce using rule 14 (sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER sentencia_if .)
+    CADENA          reduce using rule 14 (sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER sentencia_if .)
+    PROCESO         reduce using rule 14 (sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER sentencia_if .)
+    IMPRIMIR        reduce using rule 14 (sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER sentencia_if .)
+    IF              reduce using rule 14 (sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER sentencia_if .)
+    LLAVEDER        reduce using rule 14 (sentencia_if -> IF PARENIZQ condicion PARENDER LLAVEIZQ declaraciones LLAVEDER sentencia_if .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for IF in state 38 resolved as shift
